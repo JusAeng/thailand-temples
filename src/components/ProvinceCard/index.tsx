@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 interface ProvinceCardProp {
   name: string;
@@ -7,8 +8,14 @@ interface ProvinceCardProp {
 }
 
 const ProvinceCard: React.FC<ProvinceCardProp> = ({ name, pic }) => {
+  const navigate = useNavigate();
   return (
-    <div className="w-[500px] h-[100px] bg-slate-100 grid place-items-center rounded-xl">
+    <div
+      className="province-card"
+      onClick={() => {
+        navigate("/temples");
+      }}
+    >
       {name}
     </div>
   );
