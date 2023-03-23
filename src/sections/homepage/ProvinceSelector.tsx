@@ -3,11 +3,11 @@ import ProvinceCard from "@/components/ProvinceCard";
 
 const ProvinceSelector = () => {
   return (
-    <div>
-      <ProvinceCard />
-      <ProvinceCard />
-      <ProvinceCard />
-      <ProvinceCard />
+    <div className="flex flex-col gap-[20px]">
+      <ProvinceCard name="ratchaburi" />
+      <ProvinceCard name="ratchaburi" />
+      <ProvinceCard name="ratchaburi" />
+      <ProvinceCard name="ratchaburi" />
     </div>
   );
 };

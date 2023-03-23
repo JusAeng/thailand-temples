@@ -9,7 +9,7 @@ const HomePage = () => {
         <section>
           <img src={map_pic} alt="" className="mx-auto" />
         </section>
-        <section>
+        <section className="flex items-center justify-center">
           <ProvinceSelector />
         </section>
       </div>
