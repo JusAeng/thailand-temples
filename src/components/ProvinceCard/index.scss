@@ -1,9 +1,42 @@
-.province-card {
+.card {
   width: 500px;
   height: 100px;
-  background-color: rgb(100, 100, 125);
+  background-color: white;
   display: grid;
   place-items: center;
   border-radius: 12px;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &.small {
+    width: 300px;
+    height: 75px;
+  }
 }
+
+.card-highligh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 14px;
+  border-radius: 12px 0 0 12px;
+
+  &.red {
+    background-color: #ff607a;
+  }
+  &.yellow {
+    background-color: rgb(255, 166, 65);
+  }
+  &.purple {
+    // background-color: rgb(102, 63, 164);
+    background-color: rgb(97, 206, 160);
+  }
+  &.blue {
+    background-color: rgb(48, 103, 139);
+  }
+}
+
+// `w-[500px] h-[100px] bg-slate-100 grid place-items-center rounded-xl cursor-pointer
+// className={`absolute top-0 left-0 bg-${color} h-full w-[14px] rounded-l-xl`}
+// className={`w-[300px] h-[75px] bg-slate-100 grid place-items-center rounded-xl cursor-pointer`}
