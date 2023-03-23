@@ -1,5 +1,6 @@
 import React from "react";
 import map_pic from "@/assets/pics/thailand-map-poster.png";
+import { ProvinceSelector } from "@/sections/homepage";
 
 const HomePage = () => {
   return (
@@ -8,7 +9,9 @@ const HomePage = () => {
         <section>
           <img src={map_pic} alt="" className="mx-auto" />
         </section>
-        <section>2</section>
+        <section>
+          <ProvinceSelector />
+        </section>
       </div>
     </div>
   );
