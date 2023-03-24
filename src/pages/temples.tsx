@@ -1,10 +1,10 @@
 import React from "react";
-import { Navbar } from "@/sections/temples";
+import TemplesPerform from "@/components/TemplesPerform";
 
 const TemplesPage = () => {
   return (
     <div className="bg-ocean">
-      <Navbar />
+      <TemplesPerform />
     </div>
   );
 };
