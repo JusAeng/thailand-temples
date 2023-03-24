@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./index.scss";
 
-const TemplesPerform = () => {
+interface TemplePerformProp {
+  list: string[];
+}
+
+const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
+  const [temples, setTemples] = useState(list);
+  const halfLength = Math.ceil(temples.length / 2);
+
+  const firstPart = temples.slice(0, halfLength);
+  const secondPart = temples.slice(halfLength);
+
+  const textSearchRef = useRef<HTMLInputElement>(null);
+
+  const searching = () => {
+    let temp: string[] = [];
+    console.log("you search!");
+    let textSearch = "";
+    if (textSearchRef.current != null) {
+      textSearch = textSearchRef.current.value;
+    }
+
+    list.forEach((ele) => {
+      if (ele.includes(textSearch)) {
+        temp.push(ele);
+      }
+    });
+    setTemples(temp);
+  };
+
   return (
     <div className="performs-container">
       <section className="action">
@@ -15,20 +43,29 @@ const TemplesPerform = () => {
           <h2 className="font-bold text-3xl">Ratchaburi</h2>
         </div>
         <div className="flex mb-[10px]">
-          <input type="text" className="w-full h-[30px] rounded-[6px]" />
+          <input
+            type="text"
+            onChange={() => searching()}
+            ref={textSearchRef}
+            className="w-full h-[30px] rounded-[6px]"
+          />
         </div>
-        <span className="text-sm">624 results</span>
+        <span className="text-sm">{temples.length} results</span>
         <div className="grid grid-cols-2">
           <section>
-            <ul className="pl-[20px] style-list">
-              <li>wat</li>
-              <li>dee</li>
-              <li>kub</li>
-              <li>na</li>
-              <li>hee</li>
+            <ul>
+              {firstPart.map((wat, idx) => {
+                return <li key={idx}>{wat}</li>;
+              })}
             </ul>
           </section>
-          <section className="bg-yellow">2</section>
+          <section>
+            <ul>
+              {secondPart.map((wat, idx) => {
+                return <li key={idx}>{wat}</li>;
+              })}
+            </ul>
+          </section>
         </div>
       </section>
     </div>
