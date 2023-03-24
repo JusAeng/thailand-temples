@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import map_pic from "@/assets/pics/thailand-map.png";
+import giant_pic from "@/assets/pics/giant.png";
+import temple_pic from "@/assets/pics/temple.png";
+
 import { ProvinceSelector } from "@/sections/homepage";
 import TemplesPerform from "@/components/TemplesPerform";
 import { ProvinceContext } from "@/contexts/ProvinceContext";
@@ -43,10 +46,22 @@ const HomePage = () => {
             className="mx-auto scale-[0.95] w-[100%] h-[823px]"
           />
         </section>
-        <section className="flex items-center justify-center bg-ocean">
+        <section className="flex  justify-center bg-ocean">
           <ProvinceContext.Provider value={{ province, setProvince }}>
             {!province ? (
-              <ProvinceSelector />
+              <div>
+                <div className="w-[500px] mb-[55px]">
+                  <h1 className="text-7xl font-bold text-white mb-[20px] flex gap-[30px] items-end">
+                    Temples
+                    <img src={giant_pic} alt="" />
+                  </h1>
+                  <h1 className="text-7xl font-bold text-white flex gap-[35px]">
+                    <img src={temple_pic} alt="" />
+                    in Thailand
+                  </h1>
+                </div>
+                <ProvinceSelector />
+              </div>
             ) : (
               <TemplesPerform list={dict[province]} />
             )}
