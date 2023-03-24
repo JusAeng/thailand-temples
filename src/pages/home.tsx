@@ -1,94 +1,38 @@
-import React, { useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import map_pic from "@/assets/pics/thailand-map.png";
 import { ProvinceSelector } from "@/sections/homepage";
 import TemplesPerform from "@/components/TemplesPerform";
 import { ProvinceContext } from "@/contexts/ProvinceContext";
+import { getTemples } from "@/api";
+
+type MyDict = {
+  [key: string]: string[];
+  Ratchaburi: string[];
+  Lamphun: string[];
+  Lampang: string[];
+  Lopburi: string[];
+};
 
 const HomePage = () => {
   const [province, setProvince] = useState("");
+  const [dict, setDict] = useState<MyDict>({
+    Ratchaburi: [],
+    Lamphun: [],
+    Lampang: [],
+    Lopburi: [],
+  });
+  // console.log(dict);
 
-  const tempList = [
-    "วัดพระเจดีย์ซาวหลัง",
-    "วัดพระแก้วดอนเต้าสุชาดาราม",
-    "วัดบุญวาทย์วิหาร",
-    "วัดจองคำ",
-    "วัดเกาะคา",
-    "วัดดอยน้อย",
-    "วัดท่าผา",
-    "วัดน้ำล้อม",
-    "วัดม่วงน้อย",
-    "วัดม่อนศรีบุญโยง",
-    "วัดศิลา",
-    "วัดสันทุ่งแฮ่ม",
-    "วัดหนองหล่าย",
-    "วัดท่าช้าง",
-    "วัดนางแตน",
-    "วัดนาเวียง",
-    "วัดบ้านใหม่",
-    "วัดศาลาบัวบก",
-    "วัดศาลาเม็ง",
-    "วัดศาลาหม้อ",
-    "วัดพระเจดีย์ซาวหลัง",
-    "วัดพระแก้วดอนเต้าสุชาดาราม",
-    "วัดบุญวาทย์วิหาร",
-    "วัดจองคำ",
-    "วัดเกาะคา",
-    "วัดดอยน้อย",
-    "วัดท่าผา",
-    "วัดน้ำล้อม",
-    "วัดม่วงน้อย",
-    "วัดม่อนศรีบุญโยง",
-    "วัดศิลา",
-    "วัดสันทุ่งแฮ่ม",
-    "วัดหนองหล่าย",
-    "วัดท่าช้าง",
-    "วัดนางแตน",
-    "วัดนาเวียง",
-    "วัดบ้านใหม่",
-    "วัดศาลาบัวบก",
-    "วัดศาลาเม็ง",
-    "วัดศาลาหม้อ",
-    "วัดพระเจดีย์ซาวหลัง",
-    "วัดพระแก้วดอนเต้าสุชาดาราม",
-    "วัดบุญวาทย์วิหาร",
-    "วัดจองคำ",
-    "วัดเกาะคา",
-    "วัดดอยน้อย",
-    "วัดท่าผา",
-    "วัดน้ำล้อม",
-    "วัดม่วงน้อย",
-    "วัดม่อนศรีบุญโยง",
-    "วัดศิลา",
-    "วัดสันทุ่งแฮ่ม",
-    "วัดหนองหล่าย",
-    "วัดท่าช้าง",
-    "วัดนางแตน",
-    "วัดนาเวียง",
-    "วัดบ้านใหม่",
-    "วัดศาลาบัวบก",
-    "วัดศาลาเม็ง",
-    "วัดศาลาหม้อ",
-    "วัดพระเจดีย์ซาวหลัง",
-    "วัดพระแก้วดอนเต้าสุชาดาราม",
-    "วัดบุญวาทย์วิหาร",
-    "วัดจองคำ",
-    "วัดเกาะคา",
-    "วัดดอยน้อย",
-    "วัดท่าผา",
-    "วัดน้ำล้อม",
-    "วัดม่วงน้อย",
-    "วัดม่อนศรีบุญโยง",
-    "วัดศิลา",
-    "วัดสันทุ่งแฮ่ม",
-    "วัดหนองหล่าย",
-    "วัดท่าช้าง",
-    "วัดนางแตน",
-    "วัดนาเวียง",
-    "วัดบ้านใหม่",
-    "วัดศาลาบัวบก",
-    "วัดศาลาเม็ง",
-    "วัดศาลาหม้อ",
-  ];
+  useEffect(() => {
+    const handleResponse = (response: string[], p: string) => {
+      let temp = p.charAt(0).toUpperCase() + p.slice(1);
+      setDict((prev) => ({ ...prev, [temp]: response }));
+    };
+    let book = ["ratchaburi", "lamphun", "lampang", "lopburi"];
+    book.forEach((b) => {
+      getTemples(b, handleResponse);
+    });
+  }, []);
   return (
     <div className="h-[100vh] bg-ocean grid place-items-center">
       <div className="h-[90%] w-[1300px] bg-ocean grid grid-cols-2">
@@ -104,7 +48,7 @@ const HomePage = () => {
             {!province ? (
               <ProvinceSelector />
             ) : (
-              <TemplesPerform list={tempList} />
+              <TemplesPerform list={dict[province]} />
             )}
           </ProvinceContext.Provider>
         </section>
