@@ -34,8 +34,8 @@ const HomePage = () => {
     });
   }, []);
   return (
-    <div className="h-[100vh] bg-ocean grid place-items-center">
-      <div className="h-[90%] w-[1300px] bg-ocean grid grid-cols-2">
+    <div className="min-h-[100vh] bg-ocean grid place-items-center">
+      <div className="h-[823px] w-[1300px] bg-ocean grid grid-cols-2">
         <section className="bg-ocean">
           <img
             src={map_pic}

@@ -13,6 +13,7 @@ module.exports = {
         indigo: colors.indigo,
         yellow: colors.yellow,
         ocean: "#66b6b7",
+        lightocean: "#86c5c6",
         red: "#d28b93",
         black: "#000000",
       },
