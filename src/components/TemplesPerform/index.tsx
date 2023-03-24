@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import { ProvinceContext } from "@/contexts/ProvinceContext";
+import React, { useRef, useState, useContext } from "react";
 import "./index.scss";
 
 interface TemplePerformProp {
@@ -7,6 +8,8 @@ interface TemplePerformProp {
 
 const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
   const [temples, setTemples] = useState(list);
+  const { province, setProvince } = useContext(ProvinceContext);
+
   const halfLength = Math.ceil(temples.length / 2);
 
   const firstPart = temples.slice(0, halfLength);
@@ -34,13 +37,15 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
     <div className="performs-container">
       <section className="action">
         <div className="h-[60px]">
-          <button className="font-semibold">Back</button>
+          <button className="font-semibold" onClick={() => setProvince("")}>
+            Back
+          </button>
         </div>
         <button className="bg-white rounded-[8px] h-[30px] w-[80%]">CSV</button>
       </section>
       <section className="perform">
         <div className="h-[60px] text-center">
-          <h2 className="font-bold text-3xl">Ratchaburi</h2>
+          <h2 className="font-bold text-3xl">{province}</h2>
         </div>
         <div className="flex mb-[10px]">
           <input

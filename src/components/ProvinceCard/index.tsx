@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { ProvinceContext } from "@/contexts/ProvinceContext";
+import React, { useContext } from "react";
 import "./index.scss";
 
 interface ProvinceCardProp {
@@ -9,16 +9,10 @@ interface ProvinceCardProp {
 }
 
 const ProvinceCard: React.FC<ProvinceCardProp> = ({ name, color, small }) => {
-  const navigate = useNavigate();
-
+  const { province, setProvince } = useContext(ProvinceContext);
   return (
     <div className="relative">
-      <div
-        className={"card" + ` ${small}`}
-        onClick={() => {
-          navigate("/temples");
-        }}
-      >
+      <div className={"card" + ` ${small}`} onClick={() => setProvince(name)}>
         {name}
       </div>
       <div className={"card-highligh" + ` ${color}`}></div>
