@@ -40,7 +40,7 @@ const HomePage = () => {
           <img
             src={map_pic}
             alt=""
-            className="mx-auto scale-[0.95] w-[100%] h-full"
+            className="mx-auto scale-[0.95] w-[100%] h-[823px]"
           />
         </section>
         <section className="flex items-center justify-center bg-ocean">

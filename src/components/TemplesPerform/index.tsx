@@ -1,5 +1,8 @@
 import { ProvinceContext } from "@/contexts/ProvinceContext";
 import React, { useRef, useState, useContext } from "react";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { HiDownload } from "react-icons/hi";
+
 import "./index.scss";
 
 interface TemplePerformProp {
@@ -37,11 +40,18 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
     <div className="performs-container">
       <section className="action">
         <div className="h-[60px]">
-          <button className="font-semibold" onClick={() => setProvince("")}>
+          <button
+            className="font-semibold flex flex-row items-center"
+            onClick={() => setProvince("")}
+          >
+            <BsArrowLeftShort size={25} />
             Back
           </button>
         </div>
-        <button className="bg-white rounded-[8px] h-[30px] w-[80%]">CSV</button>
+        <button className="bg-white rounded-[8px] h-[30px] w-[80%] flex flex-row items-center justify-center gap-[3px] text-sm">
+          <HiDownload size={20} />
+          CSV
+        </button>
       </section>
       <section className="perform">
         <div className="h-[60px] text-center">
@@ -53,6 +63,7 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
             onChange={() => searching()}
             ref={textSearchRef}
             className="w-full h-[30px] rounded-[6px] text-center"
+            placeholder="search..."
           />
         </div>
         <span className="text-sm mb-[5px]">{temples.length} results</span>
