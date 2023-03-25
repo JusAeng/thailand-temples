@@ -89,7 +89,7 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
           />
         </div>
         <span className="text-sm mb-[5px]">{temples.length} results</span>
-        <div className="grid grid-cols-2 min-h-[680px] h-[70vh] bg-lightocean overflow-auto rounded-lg py-[10px] mt-[5px] max-md:h-[80vh]">
+        <div className="grid grid-cols-2 min-h-[680px] h-[70vh] bg-lightocean overflow-auto rounded-lg py-[10px] mt-[5px] max-md:min-h-[70vh]">
           <section>
             <ul>
               {firstPart.map((wat, idx) => {
