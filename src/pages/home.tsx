@@ -37,20 +37,20 @@ const HomePage = () => {
     });
   }, []);
   return (
-    <div className="min-h-[100vh] bg-ocean grid place-items-center">
-      <div className="h-[823px] w-[1300px] bg-ocean grid grid-cols-2">
-        <section className="bg-ocean">
+    <div className="min-h-[100vh] bg-ocean grid place-items-center max-md:block">
+      <div className="h-[823px] w-[1300px] bg-ocean grid grid-cols-2 max-md:block max-md:w-[380px] max-md:h-[660px] max-md:m-auto">
+        <section className="bg-ocean max-md:hidden">
           <img
             src={map_pic}
             alt=""
             className="mx-auto scale-[0.95] w-[100%] h-[823px]"
           />
         </section>
-        <section className="flex  justify-center bg-ocean">
+        <section className="flex justify-center bg-ocean max-md:h-[100vh]">
           <ProvinceContext.Provider value={{ province, setProvince }}>
             {!province ? (
-              <div>
-                <div className="w-[500px] mb-[55px]">
+              <div className="scale-90 max-md:scale-x-[0.7] max-md:scale-y-[0.75]">
+                <div className="w-[500px] mb-[55px] pl-[10px]">
                   <h1 className="text-7xl font-bold text-white mb-[20px] flex gap-[30px] items-end">
                     Temples
                     <img src={giant_pic} alt="" />
