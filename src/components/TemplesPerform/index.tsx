@@ -2,6 +2,7 @@ import { ProvinceContext } from "@/contexts/ProvinceContext";
 import React, { useRef, useState, useContext } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
+import FileSaver from "file-saver";
 
 import "./index.scss";
 
@@ -19,6 +20,14 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
   const secondPart = temples.slice(halfLength);
 
   const textSearchRef = useRef<HTMLInputElement>(null);
+
+  const downloadCSV = (data: string[], filename: string) => {
+    const fileType = "text/csv;charset=UTF-8";
+    const fileExtension = ".csv";
+    const csvData = "\uFEFF" + data.join("\n");
+    const blob = new Blob([csvData], { type: fileType });
+    FileSaver.saveAs(blob, filename + fileExtension);
+  };
 
   const searching = () => {
     let temp: string[] = [];
@@ -48,7 +57,12 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
             Back
           </button>
         </div>
-        <button className="bg-white rounded-[8px] h-[30px] w-[80%] flex flex-row items-center justify-center gap-[3px] text-sm">
+        <button
+          className="bg-white rounded-[8px] h-[30px] w-[80%] flex flex-row items-center justify-center gap-[3px] text-sm"
+          onClick={() => {
+            downloadCSV(list, `${province}_temples`);
+          }}
+        >
           <HiDownload size={20} />
           CSV
         </button>

@@ -36,6 +36,7 @@ const HomePage = () => {
       getTemples(b, handleResponse);
     });
   }, []);
+
   return (
     <div className="min-h-[100vh] bg-ocean grid place-items-center max-md:block">
       <div className="h-[823px] w-[1300px] bg-ocean grid grid-cols-2 max-md:block max-md:w-[380px] max-md:h-[660px] max-md:m-auto">
