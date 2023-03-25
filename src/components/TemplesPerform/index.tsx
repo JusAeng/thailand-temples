@@ -2,6 +2,7 @@ import { ProvinceContext } from "@/contexts/ProvinceContext";
 import React, { useRef, useState, useContext } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
+import { AiFillHome } from "react-icons/ai";
 import FileSaver from "file-saver";
 
 import "./index.scss";
@@ -68,8 +69,15 @@ const TemplesPerform: React.FC<TemplePerformProp> = ({ list }) => {
         </button>
       </section>
       <section className="perform">
-        <div className="h-[60px] text-center">
-          <h2 className="font-bold text-3xl">{province}</h2>
+        <div className="h-[60px] relatives text-center">
+          <h2 className="font-bold text-3xl">
+            <AiFillHome
+              size={25}
+              className="md:hidden absolute mt-[5px]"
+              onClick={() => setProvince("")}
+            />
+            {province}
+          </h2>
         </div>
         <div className="flex mb-[10px]">
           <input
